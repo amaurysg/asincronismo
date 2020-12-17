@@ -32,47 +32,39 @@ function fetchData(url_api, callback){
 
 
 /* let API = "https://pokeapi.co/api/v2/pokemon/" */
+
 fetchData(API, function(error1, data1){
   if(error1) return console.error(error1)
-  fetchData(data1.results[1].url, function(error2,data2){
-    if(error2) return console.error(error2)
-    fetchData(data2.forms[0].url, function(error3, data3){
-      if(error3) return console.log(error3)
-      fetchData(data3.version_group.url, function(error4,data4){
-        if(error4) return console.error(error4)
-        fetchData(data2.species.url, function (error5,data5){
-          if(error5) return console.error(error5)
-          
-          console.log("Id: ",data3.id)
-          console.log("Name: ",data3.name)     
-          console.log("Image:" , data3.sprites.front_default)      
-          console.log('Generación: ',data4.generation.name)
-          console.log("Species:" , data5.egg_groups[0].name)
-          
-        })
-
-
-       
-      })
-    
-
-      
-    })
-    
-    
-    /*   
-    console.log('Small effects in this Pokémon: ', data3.effect_entries[0]) */
-    /* 
-        console.log('Sprites (img): ', data2.sprites.front_default) */
-    
-  /*   console.log('data2', data2.moves[0].move.name) */
-    
-  })
-  
+    fetchData(data1.results[0].url, function(error2,data2){
+     if(error2) return console.error(error2)
+       fetchData(data2.forms[0].url, function(error3, data3){
+        if(error3) return console.log(error3)
+         fetchData(data3.version_group.url, function(error4,data4){
+          if(error4) return console.error(error4)
+           fetchData(data2.species.url, function (error5,data5){
+            if(error5) return console.error(error5)
+                  console.log("Count: ",data1.count)
+                  console.log("Id: ",data3.id)
+                  console.log("Name: ",data3.name)     
+                  console.log("Image:" , data3.sprites.front_default)      
+                 console.log("Generation:",data4.generation.name)
+                 console.log("Species:" , data5.egg_groups[0].name)        
+        })   
+      })      
+    })         
+  })  
 })
+
+
 /*   console.log('data2', data2)
-  console.log("url_1: ",API);
-  console.log("url_2: ",data1.results[0].url);  */
+console.log("url_1: ",API);
+console.log("url_2: ",data1.results[0].url);  */
+/*   
+console.log('Small effects in this Pokémon: ', data3.effect_entries[0]) */
+/* 
+    console.log('Sprites (img): ', data2.sprites.front_default) */
+
+/*   console.log('data2', data2.moves[0].move.name) */
 
  
      /* 
